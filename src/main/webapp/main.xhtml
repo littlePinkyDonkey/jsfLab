@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<f:view>
+    <h:head>
+        <title>Lab 3</title>
+        <h:outputStylesheet name="base.css" library="css"/>
+        <h:outputStylesheet name="home.css" library="css"/>
+    </h:head>
+
+    <h:body>
+        <div id="workspace-container">
+            <div id="task-chart-container" class="workspace-item-container">
+                <div class="horizontal-centering-container">
+                    <div id="chart-box">
+                        <h:graphicImage id="task-chart-image" value="resources/img/chart.png"/>
+                        <canvas id="task-chart"></canvas>
+                    </div>
+                    <h:form id="canvas-form">
+                        <h:inputHidden id="task-chart-x" value="#{check.canvasX}"/>
+                        <h:inputHidden id="task-chart-y" value="#{check.canvasY}"/>
+                        <h:commandButton id="canvas-form-button" styleClass="hidden" actionListener="#{check.checkCanvas()}"/>
+                    </h:form>
+                    <span id="warning-container-chart" class="warning-container"></span>
+                </div>
+            </div>
+            <div id="computation-form-container" class="workspace-item-container">
+                <h:form id="computation-form">
+                    <div class="parameter-form-container">
+                        <div class="parameter-container">
+                            <label class="parameter-label">X:</label>
+                            <span class="slider-value">Текущее значение: </span>
+                            <h:outputText styleClass="slider-value" id="slider-output-X" value="#{check.x}"/>
+                            <h:inputHidden id="slider-input-X" value="#{check.x}"/>
+                            <p:slider styleClass="slider-bar" for="slider-input-X"
+                                      display="slider-output-X" displayTemplate="{value}"
+                                      minValue="-3" maxValue="3" step="0.5">
+                                <p:ajax event="slideEnd" process="slider-input-R"/>
+                            </p:slider>
+                        </div>
+
+                        <div class="parameter-container">
+                            <label class="parameter-label">Y:</label>
+                            <h:inputText id="Y-param" styleClass="input-param" a:placeholder="(-3 ... 5)"
+                                         maxlength="10" required="true" requiredMessage="Y должен быть указан"
+                                         value="#{check.y}" converterMessage="Y должен быть числом">
+                                <f:validator validatorId="YValidator"/>
+                                <p:ajax event="blur" update="warning-container-Y"/>
+                            </h:inputText>
+                            <h:message for="Y-param" id="warning-container-Y" styleClass="warning-container"/>
+                        </div>
+
+                        <div class="parameter-container">
+                            <label class="parameter-label">R:</label>
+                            <span class="slider-value">Текущее значение: </span>
+                            <h:outputText styleClass="slider-value" id="slider-output-R" value="#{check.r}"/>
+                            <h:inputHidden id="slider-input-R" value="#{check.r}"/>
+                            <p:slider styleClass="slider-bar" for="slider-input-R"
+                                      display="slider-output-R" displayTemplate="{value}"
+                                      minValue="1.0" maxValue="4.0" step="0.25">
+                                <p:ajax event="slideEnd" process="slider-input-R"/>
+                            </p:slider>
+                        </div>
+
+                        <div class="horizontal-centering-container button-container">
+                            <h:commandButton id="computation-form-button" styleClass="submit-button"
+                                             action="#{check.checkArea()}" value="Отправить"/>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+
+        <div id="result-container" class="horizontal-centering-container">
+            <h1>История</h1>
+            <h:link styleClass="main-link" value="На главную" outcome="index"/>
+            <div id="result-table-container" class="table-container #{empty check.history ? 'hidden' : ''}">
+                <h:dataTable id="result-table" styleClass="result-table" value="#{check.history}" var="point">
+                    <h:column>
+                        <f:facet name="header">X</f:facet>
+                        #{point.x}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Y</f:facet>
+                        #{point.y}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">R</f:facet>
+                        #{point.r}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Попадение</f:facet>
+                        #{point.hit ? 'Да' : 'Нет'}
+                    </h:column>
+                    <!--                    <h:column>-->
+                    <!--                        <f:facet name="header">Попадение (для текущего R)</f:facet>-->
+                    <!--                        #{areaChecker.isHit(point) ? 'Да' : 'Нет'}-->
+                    <!--                    </h:column>-->
+                </h:dataTable>
+            </div>
+        </div>
+
+        <h:outputScript library="js" name="utils.js" />
+        <h:outputScript library="js" name="chart.js" />
+    </h:body>
+</f:view>
+</html>

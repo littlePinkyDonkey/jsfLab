@@ -16,7 +16,7 @@ public class ConfigReader {
         ConfigReader creator = new ConfigReader();
 
         try(InputStream is = creator.getClass().getClassLoader()
-                .getResourceAsStream("./recources/hibernate.properties")){
+                .getResourceAsStream("hibernate.properties")){
             properties.load(is);
             propValue = properties.getProperty(propName);
         }catch(IOException e){

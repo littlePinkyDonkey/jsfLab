@@ -80,14 +80,14 @@ public class AreaChecker implements Serializable {
         history.addFirst(userPoint);
     }
 
-    private boolean isHit(Point currentPoint){
+    public boolean isHit(Point currentPoint){
         double x = currentPoint.getX();
         double y = currentPoint.getY();
         double r = currentPoint.getR();
         double halfR = currentPoint.getR()/2;
 
-        return x >= 0 && y >= 0 && y < halfR - x / 2 ||
+        return x >= 0 && y >= 0 && y < halfR - x ||
                 x >= 0 && y <= 0 && x <= r && y >= -halfR ||
-                x <= 0 && y <= 0 && x*x + y*y < r*r;
+                x <= 0 && y <= 0 && x*x + y*y <= r*r;
     }
 }

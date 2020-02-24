@@ -19,10 +19,10 @@ const signsFont = "14px monospace";
 
 function draw() {
 	let canvas = $("#task-chart")[0];
-	// drawAxises(canvas);
-	// drawAxisesSigns(canvas);
+	drawAxises(canvas);
+	drawAxisesSigns(canvas);
 	let R = document.getElementById('computation-form:slider-input-R').value;
-	// drawPointsSigns(canvas, R);
+	drawPointsSigns(canvas, R);
 	if (!$("#result-table-container").hasClass("hidden")) {
 		let results = $("#result-table tbody tr");
 		for (var i = results.length - 1; i >= 0; i--) {
@@ -31,7 +31,7 @@ function draw() {
 			let R = document.getElementById('computation-form:slider-input-R').value;
 			let originalX = toOriginalX(X, R);
 			let originalY = toOriginalY(Y, R);
-			if (results.eq(i).find("td").eq(4).text().trim() === "Да") {
+			if (results.eq(i).find("td").eq(3).text().trim() === "Да") {
 				drawPoint(canvas, originalX, originalY, "Green");
 			} else {
 				drawPoint(canvas, originalX, originalY, "Red");
@@ -132,6 +132,7 @@ function drawPointsSigns(canvas, r) {
 	context.fillText(sign, canvas.width / 2 + signSpace / 2, canvas.height * 0.1 + signSpace / 2);
 }
 
+
 function drawPoint(canvas, x, y, pointColor) {
 	let context = canvas.getContext("2d");
 	context.beginPath();
@@ -160,9 +161,4 @@ function updateR() {
 	let R = document.getElementById('computation-form:slider-input-R').value;
 	document.getElementById('r-update-form:current-r').value = R;
 	document.getElementById('r-update-form:r-update-form-button').click();
-}
-
-function reload() {
-	var loc = window.location;
-	window.location = loc.protocol + '//' + loc.host + loc.pathname + loc.search;
 }

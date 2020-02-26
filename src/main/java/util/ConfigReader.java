@@ -35,7 +35,6 @@ public class ConfigReader {
         config.setProperty("hibernate.connection.username", getProperty("username"));
         config.setProperty("hibernate.connection.password", getProperty("password"));
         config.setProperty("hibernate.show_sql", getProperty("show_sql"));
-        config.setProperty("hibernate.hbm2ddl.auto", getProperty("hbm2ddl.auto"));
 
         return config;
     }

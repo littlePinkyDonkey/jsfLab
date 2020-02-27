@@ -8,6 +8,28 @@
         <managed-bean-name>check</managed-bean-name>
         <managed-bean-class>beans.AreaChecker</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
+
+        <managed-property>
+            <property-name>service</property-name>
+            <value>#{pointService}</value>
+        </managed-property>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>pointService</managed-bean-name>
+        <managed-bean-class>service.PointService</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+
+        <managed-property>
+            <property-name>dao</property-name>
+            <value>#{pointDao}</value>
+        </managed-property>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>pointDao</managed-bean-name>
+        <managed-bean-class>dao.PointDao</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
 
     <navigation-rule>

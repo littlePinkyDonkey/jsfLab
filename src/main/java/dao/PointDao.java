@@ -4,43 +4,25 @@ import model.Point;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import java.util.List;
+import org.hibernate.cfg.Configuration;
 
 public class PointDao {
+
     private SessionFactory sessionFactory;
 
-    public PointDao(SessionFactory sessionFactory){
-        this.sessionFactory = sessionFactory;
-    }
-
-    public List<Point> getAllPoints() {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-
-        List<Point> points = null;
-        try{
-//            points = session.
-            transaction.commit();
-        }catch (Exception e){
-            transaction.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
-
-        return points;
+    public PointDao(){
+        this.sessionFactory = new Configuration().configure().buildSessionFactory();
     }
 
     public boolean addPoint(Point point) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        try{
+        try {
             session.save(point);
             transaction.commit();
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             e.printStackTrace();
             return false;

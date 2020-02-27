@@ -1,16 +1,13 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "POINTS")
 public class Point {
-    @Id
-    @Column(name = "id", nullable = false)
-    private int id;
+
+    @Id @SequenceGenerator(name = "id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
+    private Long id;
 
     @Column(name = "x", nullable = false)
     private Double x;
@@ -21,7 +18,6 @@ public class Point {
     @Column(name = "r", nullable = false)
     private Double r;
 
-    @Column(name = "hit", nullable = false)
     private boolean hit;
 
     public Point(Double x, Double y, Double r) {

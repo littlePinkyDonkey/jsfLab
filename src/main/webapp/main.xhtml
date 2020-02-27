@@ -20,7 +20,7 @@
             <div id="task-chart-container" class="workspace-item-container">
                 <div class="horizontal-centering-container">
                     <div id="chart-box">
-                        <h:graphicImage id="task-chart-image" value="resources/img/chart.png"/>
+                        <h:graphicImage id="task-chart-image" library="img" name="chart.png"/>
                         <canvas id="task-chart"></canvas>
                     </div>
                     <h:form id="canvas-form">
@@ -72,7 +72,7 @@
 
                         <div class="horizontal-centering-container button-container">
                             <h:commandButton id="computation-form-button" styleClass="submit-button"
-                                             action="#{check.checkArea()}" value="Отправить"/>
+                                             action="#{check.checkArea()}" value="Отправить" />
                         </div>
                     </div>
                 </h:form>
@@ -101,7 +101,7 @@
                         #{point.hit ? 'Да' : 'Нет'}
                     </h:column>
 <!--                        <h:column>-->
-<!--                            <f:facet name="header">Попадение (для текущего R)</f:facet>-->
+<!--                            <f:facet name="header">Текущее попадание</f:facet>-->
 <!--                            #{check.isHit(point) ? 'Да' : 'Нет'}-->
 <!--                        </h:column>-->
                 </h:dataTable>

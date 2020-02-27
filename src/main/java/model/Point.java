@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity
 public class Point {
 
-    @Id @SequenceGenerator(name = "id_seq")
+    @Id
+    @SequenceGenerator(name = "id_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
     private Long id;
 
@@ -20,6 +21,7 @@ public class Point {
 
     private boolean hit;
 
+    public Point(){}
     public Point(Double x, Double y, Double r) {
         this.x = x;
         this.y = y;

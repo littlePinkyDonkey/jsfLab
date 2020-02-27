@@ -66,7 +66,6 @@ public class AreaChecker implements Serializable {
     }
 
     public void checkCanvas(){
-        System.out.println(this.r + " " + this.canvasX + " " + this.canvasY);
         Point userPoint = new Point(canvasX,canvasY,r);
         userPoint.setHit(isHit(userPoint));
         service.addPoint(userPoint);

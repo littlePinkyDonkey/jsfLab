@@ -5,14 +5,9 @@
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
     <managed-bean>
-        <managed-bean-name>check</managed-bean-name>
-        <managed-bean-class>beans.AreaChecker</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-
-        <managed-property>
-            <property-name>service</property-name>
-            <value>#{pointService}</value>
-        </managed-property>
+        <managed-bean-name>pointDao</managed-bean-name>
+        <managed-bean-class>dao.PointDao</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
 
     <managed-bean>
@@ -27,9 +22,14 @@
     </managed-bean>
 
     <managed-bean>
-        <managed-bean-name>pointDao</managed-bean-name>
-        <managed-bean-class>dao.PointDao</managed-bean-class>
-        <managed-bean-scope>application</managed-bean-scope>
+        <managed-bean-name>check</managed-bean-name>
+        <managed-bean-class>beans.AreaChecker</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <managed-property>
+            <property-name>service</property-name>
+            <value>#{pointService}</value>
+        </managed-property>
     </managed-bean>
 
     <navigation-rule>

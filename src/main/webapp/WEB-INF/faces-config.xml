@@ -48,8 +48,8 @@
     </navigation-rule>
 
     <validator>
-        <validator-id>YValidator</validator-id>
-        <validator-class>validators.ValidatorY</validator-class>
+        <validator-id>XValidator</validator-id>
+        <validator-class>validators.ValidatorX</validator-class>
     </validator>
 
 </faces-config>

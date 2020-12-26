@@ -20,7 +20,7 @@
             <div id="task-chart-container" class="workspace-item-container">
                 <div class="horizontal-centering-container">
                     <div id="chart-box">
-                        <h:graphicImage id="task-chart-image" library="img" name="chart.png"/>
+                        <h:graphicImage id="task-chart-image" library="img" name="chart2.png"/>
                         <canvas id="task-chart"></canvas>
                     </div>
                     <h:form id="canvas-form">
@@ -35,27 +35,55 @@
             <div id="computation-form-container" class="workspace-item-container">
                 <h:form id="computation-form">
                     <div class="parameter-form-container">
+
                         <div class="parameter-container">
                             <label class="parameter-label">X:</label>
-                            <span class="slider-value">Текущее значение: </span>
-                            <h:outputText styleClass="slider-value" id="slider-output-X" value="#{check.x}"/>
-                            <h:inputHidden id="slider-input-X" value="#{check.x}"/>
-                            <p:slider styleClass="slider-bar" for="slider-input-X"
-                                      display="slider-output-X" displayTemplate="{value}"
-                                      minValue="-3" maxValue="3" step="0.5">
-                                <p:ajax event="slideEnd" process="slider-input-R"/>
-                            </p:slider>
+                            <h:inputText id="X-param" styleClass="input-param" a:placeholder="(-3 ... 3)"
+                                         maxlength="10" required="true" requiredMessage="X должен быть указан"
+                                         value="#{check.x}" converterMessage="X должен быть числом">
+                                <f:validator validatorId="XValidator"/>
+                                <p:ajax event="blur" update="warning-container-X"/>
+                            </h:inputText>
+                            <h:message for="X-param" id="warning-container-X" styleClass="warning-container"/>
                         </div>
 
                         <div class="parameter-container">
                             <label class="parameter-label">Y:</label>
-                            <h:inputText id="Y-param" styleClass="input-param" a:placeholder="(-3 ... 5)"
-                                         maxlength="10" required="true" requiredMessage="Y должен быть указан"
-                                         value="#{check.y}" converterMessage="Y должен быть числом">
-                                <f:validator validatorId="YValidator"/>
-                                <p:ajax event="blur" update="warning-container-Y"/>
-                            </h:inputText>
-                            <h:message for="Y-param" id="warning-container-Y" styleClass="warning-container"/>
+
+                            <div class="check-box">
+                                <div>
+                                    <label class="parameter-label">-4:</label>
+                                    <h:selectBooleanCheckbox id="Y-4" name="Y1" value="#{check.y_4}"/>
+                                </div>
+                                <div>
+                                    <label class="parameter-label">-3:</label>
+                                    <h:selectBooleanCheckbox id="Y-3" name="Y2" value="#{check.y_3}"/>
+                                </div>
+                                <div class="check-box">
+                                    <label class="parameter-label">-2:</label>
+                                    <h:selectBooleanCheckbox id="Y-2" name="Y3" value="#{check.y_2}"/>
+                                </div>
+                                <div class="check-box">
+                                    <label class="parameter-label">-1:</label>
+                                    <h:selectBooleanCheckbox id="Y-1" name="Y4" value="#{check.y_1}"/>
+                                </div>
+                                <div>
+                                    <label class="parameter-label">0:</label>
+                                    <h:selectBooleanCheckbox id="Y0" name="Y5" value="#{check.y0}"/>
+                                </div>
+                                <div>
+                                    <label class="parameter-label">1:</label>
+                                    <h:selectBooleanCheckbox id="Y1" name="Y5" value="#{check.y1}"/>
+                                </div>
+                                <div>
+                                    <label class="parameter-label">2:</label>
+                                    <h:selectBooleanCheckbox id="Y2" name="Y5" value="#{check.y2}"/>
+                                </div>
+                                <div>
+                                    <label class="parameter-label">3:</label>
+                                    <h:selectBooleanCheckbox id="Y3" name="Y5" value="#{check.y3}"/>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="parameter-container">
@@ -65,7 +93,7 @@
                             <h:inputHidden id="slider-input-R" value="#{check.r}"/>
                             <p:slider styleClass="slider-bar" for="slider-input-R"
                                       display="slider-output-R" displayTemplate="{value}"
-                                      minValue="1.0" maxValue="4.0" step="0.25">
+                                      minValue="1.0" maxValue="4.0" step="0.5">
                                 <p:ajax event="slideEnd" process="slider-input-R"/>
                             </p:slider>
                         </div>
@@ -100,10 +128,6 @@
                         <f:facet name="header">Попадение</f:facet>
                         #{point.hit ? 'Да' : 'Нет'}
                     </h:column>
-<!--                        <h:column>-->
-<!--                            <f:facet name="header">Текущее попадание</f:facet>-->
-<!--                            #{check.isHit(point) ? 'Да' : 'Нет'}-->
-<!--                        </h:column>-->
                 </h:dataTable>
             </div>
         </div>

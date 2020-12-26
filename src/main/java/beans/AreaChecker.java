@@ -151,7 +151,7 @@ public class AreaChecker implements Serializable {
 
         return x >= 0 && y <= 0 && x <= halfR && y >= -r ||
                 x <= 0 && y <= 0 && x*x + y*y <= halfR*halfR ||
-                x <= 0 && y >= 0 && x >= -halfR && y < x / 2 + halfR ;
+                x <= 0 && y >= 0 && x >= -halfR && y < x + halfR ;
     }
 
     public PointService getService() {

@@ -15,7 +15,7 @@ public class AreaChecker implements Serializable {
     private LinkedList<Point> history = new LinkedList<>();
 
     private Double x;
-    private boolean y_4 = true;
+    private boolean y_4 = false;
     private boolean y_3 = false;
     private boolean y_2 = false;
     private boolean y_1 = false;

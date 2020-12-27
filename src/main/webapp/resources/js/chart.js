@@ -91,6 +91,7 @@ function drawAxises(canvas) {
 
 function drawAxisesSigns(canvas) {
 	let context = canvas.getContext("2d");
+	context.clearRect(0, 0, canvas.width, canvas.height);
 	context.font = signsFont;
 	context.fillStyle = signsColor;
 

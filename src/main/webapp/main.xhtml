@@ -51,37 +51,38 @@
                             <label class="parameter-label">Y:</label>
 
                             <div class="check-box">
+                                <h:inputHidden id="y" value="#{check.y}"/>
                                 <div>
                                     <label class="parameter-label">-4:</label>
-                                    <h:selectBooleanCheckbox id="Y-4" name="Y1" value="#{check.y_4}"/>
+                                    <h:selectBooleanCheckbox id="Y-4" name="Y1" class="y-box" onclick="selectY(this, -4.0)"/>
                                 </div>
                                 <div>
                                     <label class="parameter-label">-3:</label>
-                                    <h:selectBooleanCheckbox id="Y-3" name="Y2" value="#{check.y_3}"/>
+                                    <h:selectBooleanCheckbox id="Y-3" name="Y2" class="y-box" onclick="selectY(this, -3.0)"/>
                                 </div>
                                 <div class="check-box">
                                     <label class="parameter-label">-2:</label>
-                                    <h:selectBooleanCheckbox id="Y-2" name="Y3" value="#{check.y_2}"/>
+                                    <h:selectBooleanCheckbox id="Y-2" name="Y3" class="y-box" onclick="selectY(this, -2.0)"/>
                                 </div>
                                 <div class="check-box">
                                     <label class="parameter-label">-1:</label>
-                                    <h:selectBooleanCheckbox id="Y-1" name="Y4" value="#{check.y_1}"/>
+                                    <h:selectBooleanCheckbox id="Y-1" name="Y4" class="y-box" onclick="selectY(this, -1.0)"/>
                                 </div>
                                 <div>
                                     <label class="parameter-label">0:</label>
-                                    <h:selectBooleanCheckbox id="Y0" name="Y5" value="#{check.y0}"/>
+                                    <h:selectBooleanCheckbox id="Y0" name="Y5" class="y-box" onclick="selectY(this, 0.0)"/>
                                 </div>
                                 <div>
                                     <label class="parameter-label">1:</label>
-                                    <h:selectBooleanCheckbox id="Y1" name="Y5" value="#{check.y1}"/>
+                                    <h:selectBooleanCheckbox id="Y1" name="Y5" class="y-box" onclick="selectY(this, 1.0)"/>
                                 </div>
                                 <div>
                                     <label class="parameter-label">2:</label>
-                                    <h:selectBooleanCheckbox id="Y2" name="Y5" value="#{check.y2}"/>
+                                    <h:selectBooleanCheckbox id="Y2" name="Y5" class="y-box" onclick="selectY(this, 2.0)"/>
                                 </div>
                                 <div>
                                     <label class="parameter-label">3:</label>
-                                    <h:selectBooleanCheckbox id="Y3" name="Y5" value="#{check.y3}"/>
+                                    <h:selectBooleanCheckbox id="Y3" name="Y5" class="y-box" onclick="selectY(this, 3.0)"/>
                                 </div>
                             </div>
                         </div>
@@ -134,6 +135,7 @@
 
         <h:outputScript library="js" name="utils.js" />
         <h:outputScript library="js" name="chart.js" />
+        <h:outputScript library="js" name="validate_y.js" />
     </h:body>
 </f:view>
 </html>

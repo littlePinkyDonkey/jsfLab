@@ -15,14 +15,6 @@ public class AreaChecker implements Serializable {
     private LinkedList<Point> history = new LinkedList<>();
 
     private Double x;
-    private boolean y_4 = false;
-    private boolean y_3 = false;
-    private boolean y_2 = false;
-    private boolean y_1 = false;
-    private boolean y0 = false;
-    private boolean y1 = false;
-    private boolean y2 = false;
-    private boolean y3 = false;
     private Double y;
     private Double r = 1d;
 
@@ -34,30 +26,6 @@ public class AreaChecker implements Serializable {
     }
     public Double getX() {
         return x;
-    }
-    public boolean isY_4() {
-        return y_4;
-    }
-    public boolean isY_3() {
-        return y_3;
-    }
-    public boolean isY_2() {
-        return y_2;
-    }
-    public boolean isY_1() {
-        return y_1;
-    }
-    public boolean isY0() {
-        return y0;
-    }
-    public boolean isY1() {
-        return y1;
-    }
-    public boolean isY2() {
-        return y2;
-    }
-    public boolean isY3() {
-        return y3;
     }
     public Double getY() {
         return y;
@@ -75,46 +43,8 @@ public class AreaChecker implements Serializable {
     public void setX(Double x) {
         this.x = x;
     }
-    public void setY_4(boolean y_4) {
-        this.y_4 = y_4;
-    }
-    public void setY_3(boolean y_3) {
-        this.y_3 = y_3;
-    }
-    public void setY_2(boolean y_2) {
-        this.y_2 = y_2;
-    }
-    public void setY_1(boolean y_1) {
-        this.y_1 = y_1;
-    }
-    public void setY0(boolean y0) {
-        this.y0 = y0;
-    }
-    public void setY1(boolean y1) {
-        this.y1 = y1;
-    }
-    public void setY2(boolean y2) {
-        this.y2 = y2;
-    }
-    public void setY3(boolean y3) {
-        this.y3 = y3;
-    }
-    public void setY() {
-        if (y_4) {
-            y = -4d;
-        } else if (y_3) {
-            y = -3d ;
-        } else if (y_2) {
-            y = -2d;
-        } else if (y_1) {
-            y = -1d;
-        } else if (y1) {
-            y = 1d;
-        } else if (y2) {
-            y = 2d;
-        } else if (y3) {
-            y = 3d;
-        }
+    public void setY(Double y) {
+        this.y = y;
     }
     public void setR(Double r) {
         this.r = r;
@@ -127,7 +57,6 @@ public class AreaChecker implements Serializable {
     }
 
     public void checkArea(){
-        setY();
         if (x != null && y != null){
             Point userPoint = new Point(x,y,r);
             userPoint.setHit(isHit(userPoint));

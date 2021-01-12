@@ -60,16 +60,32 @@ public class AreaChecker implements Serializable {
         if (x != null && y != null){
             Point userPoint = new Point(x,y,r);
             userPoint.setHit(isHit(userPoint));
-            service.addPoint(userPoint);
-            history.addFirst(userPoint);
+            if (history.size() > 0) {
+                if (!userPoint.equals(history.getFirst())) {
+                    service.addPoint(userPoint);
+                    history.addFirst(userPoint);
+                }
+            } else {
+                service.addPoint(userPoint);
+                history.addFirst(userPoint);
+                System.out.println(history.getFirst());
+            }
         }
     }
 
     public void checkCanvas(){
         Point userPoint = new Point(canvasX,canvasY,r);
         userPoint.setHit(isHit(userPoint));
-        service.addPoint(userPoint);
-        history.addFirst(userPoint);
+        if (history.size() > 0) {
+            if (!userPoint.equals(history.getFirst())) {
+                service.addPoint(userPoint);
+                history.addFirst(userPoint);
+            }
+        } else {
+            service.addPoint(userPoint);
+            history.addFirst(userPoint);
+            System.out.println(history.getFirst());
+        }
     }
 
     public boolean isHit(Point currentPoint){

@@ -53,4 +53,32 @@ public class Point {
     public void setHit(boolean hit) {
         this.hit = hit;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Point point = (Point) o;
+        return x.equals(point.getX()) &&
+                y.equals(point.getY()) &&
+                r.equals(point.getR()) &&
+                isHit() == point.isHit();
+    }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "id=" + id +
+                ", x=" + x +
+                ", y=" + y +
+                ", r=" + r +
+                ", hit=" + hit +
+                '}';
+    }
 }
